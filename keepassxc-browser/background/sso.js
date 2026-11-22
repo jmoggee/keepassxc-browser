@@ -41,6 +41,16 @@ const ssoOrigin = function(url) {
     }
 };
 
+// The tab's URL. The tab a message arrives with does not always carry one (Firefox), so ask the browser then.
+const ssoTabUrl = async function(tab) {
+    if (tab?.url) {
+        return tab.url;
+    }
+
+    const current = await browser.tabs.get(tab.id).catch(() => undefined);
+    return current?.url;
+};
+
 // A provider page belongs to a flow when it is the tab that started it, or a tab opened from it or after it
 const ssoTabBelongsTo = function(tab, flow) {
     return tab?.id === flow.tabId || tab?.openerTabId === flow.tabId || flow.openedTabs?.includes(tab?.id);
@@ -75,7 +85,7 @@ kpxcSSO.start = async function(tab, args = []) {
         login: login,
         openedTabs: [],
         provider: provider,
-        siteOrigin: ssoOrigin(tab.url),
+        siteOrigin: ssoOrigin(await ssoTabUrl(tab)),
         started: Date.now(),
         tabId: tab.id,
         uuid: uuid,
@@ -134,7 +144,7 @@ kpxcSSO.buttonClicked = async function(tab, args = []) {
         return;
     }
 
-    const siteOrigin = ssoOrigin(tab.url);
+    const siteOrigin = ssoOrigin(await ssoTabUrl(tab));
     const ignored = (await browser.storage.local.get({ [SSO_IGNORED_SITES]: [] }))[SSO_IGNORED_SITES];
     if (!siteOrigin || ignored.includes(siteOrigin)) {
         return;
@@ -168,12 +178,12 @@ kpxcSSO.providerPageSeen = async function(tab, args = []) {
 // offer if there is one: only once the user has been to the provider and back.
 kpxcSSO.siteLoaded = async function(tab) {
     const intent = await kpxcSSO.getIntent();
-    if (intent?.tabId === tab.id && intent.siteOrigin === ssoOrigin(tab.url) && intent.done.length > 0) {
+    if (intent?.tabId === tab.id && intent.siteOrigin === ssoOrigin(await ssoTabUrl(tab)) && intent.done.length > 0) {
         await kpxcSSO.end();
     }
 
     const pending = await kpxcSSO.getPendingSave();
-    if (!pending || pending.tabId !== tab.id || pending.siteOrigin !== ssoOrigin(tab.url) || !pending.leftSite) {
+    if (!pending || pending.tabId !== tab.id || pending.siteOrigin !== ssoOrigin(await ssoTabUrl(tab)) || !pending.leftSite) {
         return undefined;
     }
 
@@ -207,7 +217,7 @@ kpxcSSO.getSiteLogins = async function(tab) {
         return currentTab.credentials;
     }
 
-    const logins = await kpxcSSO.getLogins(tab, [ tab.url ]);
+    const logins = await kpxcSSO.getLogins(tab, [ await ssoTabUrl(tab) ]);
     tabs.updateTabValues(tab.id, { credentials: logins });
     return logins;
 };
@@ -221,7 +231,7 @@ kpxcSSO.getSiteLogins = async function(tab) {
 kpxcSSO.save = async function(tab, args = []) {
     const [ provider, providerName, login ] = args;
     const pending = await kpxcSSO.getPendingSave();
-    const siteOrigin = pending?.siteOrigin ?? ssoOrigin(tab.url);
+    const siteOrigin = pending?.siteOrigin ?? ssoOrigin(await ssoTabUrl(tab));
     await kpxcSSO.setState('ssoPendingSave', undefined);
 
     try {
