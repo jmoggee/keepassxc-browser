@@ -39,6 +39,8 @@ const defaultSettings = {
     showNotifications: true,
     showOTPIcon: true,
     showTroubleshootingGuideAlert: true,
+    ssoOfferSave: true,
+    ssoSignIn: true,
     useCompactMode: false,
     useMonochromeToolbarIcon: false,
     useObserver: true,

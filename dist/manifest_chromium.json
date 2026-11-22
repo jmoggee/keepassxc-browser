@@ -58,6 +58,7 @@
                 "content/keepassxc-browser.js",
                 "content/observer-helper.js",
                 "content/pwgen.js",
+                "content/sso.js",
                 "content/totp-autocomplete.js",
                 "content/totp-field.js",
                 "content/username-field.js"
@@ -152,6 +153,7 @@
                 "css/define.css",
                 "css/notification.css",
                 "css/pwgen.css",
+                "css/sso.css",
                 "css/username.css",
                 "css/totp.css",
                 "content/passkeys.js"

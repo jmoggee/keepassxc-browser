@@ -15,6 +15,7 @@ try {
         'tabs.js',
         'credentials.js',
         'page.js',
+        'sso.js',
         'event.js',
         'init.js'
     );

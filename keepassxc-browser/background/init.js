@@ -33,6 +33,10 @@ const initListeners = async function() {
     // Main event listener
     browser.runtime.onMessage.addListener(kpxcEvent.onMessage);
 
+    // "Sign in with" flows follow the provider's popup or new tab
+    browser.tabs.onCreated.addListener(kpxcSSO.onTabCreated);
+    browser.tabs.onRemoved.addListener(kpxcSSO.onTabRemoved);
+
     // Listen for keyboard shortcuts specified by user
     browser.commands.onCommand.addListener(async (command) => {
         if (contextMenuItems.some(e => e.action === command)

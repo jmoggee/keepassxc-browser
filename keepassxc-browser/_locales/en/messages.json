@@ -1497,5 +1497,61 @@
     "gettingStartedNewUser": {
         "message": "Are you a new user? Check links to our documentation.",
         "description": "Are you a new user? Check links to our documentation."
+    },
+    "ssoSignInTitle": {
+        "message": "Sign in",
+        "description": "Title of the card offering to sign in with a provider."
+    },
+    "ssoSignInWith": {
+        "message": "Sign in with $1",
+        "description": "Label for signing in with a provider, e.g. Google."
+    },
+    "ssoSignIn": {
+        "message": "Sign in",
+        "description": "Button that signs in with the provider."
+    },
+    "ssoButtonNotFound": {
+        "message": "Could not find this page's $1 sign-in button.",
+        "description": "Shown when the site's provider button is missing."
+    },
+    "ssoSaveTitle": {
+        "message": "Remember this sign-in?",
+        "description": "Title of the card offering to save a provider sign-in."
+    },
+    "ssoSaveMessage": {
+        "message": "You signed in to $1 with $2.",
+        "description": "Message of the card offering to save a provider sign-in. $1 is the site, $2 the provider."
+    },
+    "ssoSaveAccount": {
+        "message": "$1 account",
+        "description": "Placeholder for the provider account, e.g. Google account."
+    },
+    "ssoSaveNever": {
+        "message": "Never for this site",
+        "description": "Button that stops offering to save provider sign-ins for the site."
+    },
+    "ssoSaved": {
+        "message": "Saved: $1 signs in with $2.",
+        "description": "Shown after saving a provider sign-in."
+    },
+    "ssoSavedWithoutFlag": {
+        "message": "The entry was saved, but this KeePassXC cannot store the sign-in provider. Add the attribute \"KPH: sso\" to the entry by hand.",
+        "description": "Shown when KeePassXC ignored the provider flag."
+    },
+    "optionsCheckboxSsoSignIn": {
+        "message": "Offer to sign in with a saved provider",
+        "description": "Sign in with provider checkbox text."
+    },
+    "optionsSsoSignInHelpText": {
+        "message": "On a site saved as signing in with Google, GitHub or another provider, offers to press the site's provider button and sign in to the provider with the saved account.",
+        "description": "Sign in with provider help text."
+    },
+    "optionsCheckboxSsoOfferSave": {
+        "message": "Offer to save provider sign-ins",
+        "description": "Save provider sign-ins checkbox text."
+    },
+    "optionsSsoOfferSaveHelpText": {
+        "message": "After you use a site's Google, GitHub or other provider button, offers to remember it. The entry holds the provider account and no password.",
+        "description": "Save provider sign-ins help text."
     }
 }

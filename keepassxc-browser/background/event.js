@@ -305,5 +305,17 @@ kpxcEvent.messageHandlers = {
     'save_settings': kpxcEvent.onSaveSettings,
     'update_available_keepassxc': kpxcEvent.onUpdateAvailableKeePassXC,
     'update_context_menu': page.updateContextMenu,
+    'sso_button_clicked': kpxcSSO.buttonClicked,
+    'sso_click_in_frames': kpxcSSO.clickInFrames,
+    'sso_dismiss_save_offer': kpxcSSO.dismissSaveOffer,
+    'sso_frame_buttons': kpxcSSO.frameButtons,
+    'sso_get_intent': kpxcSSO.getIntentForTab,
+    'sso_get_logins': kpxcSSO.getLogins,
+    'sso_get_site_logins': kpxcSSO.getSiteLogins,
+    'sso_mark_step': kpxcSSO.markStep,
+    'sso_provider_page_seen': kpxcSSO.providerPageSeen,
+    'sso_save': kpxcSSO.save,
+    'sso_site_loaded': kpxcSSO.siteLoaded,
+    'sso_start': kpxcSSO.start,
     'update_popup': page.updatePopup
 };

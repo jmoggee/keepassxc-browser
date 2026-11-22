@@ -379,9 +379,15 @@ Unencrypted message (downloadFavicon supported in KeePassXC 2.7.0 and later, but
     "group": "<group name>",
     "groupUuid": "<group UUID>",
     "uuid": "<entry UUID>",
-    "downloadFavicon": "true"
+    "downloadFavicon": "true",
+    "notes": "<optional, new entries only>",
+    "stringFields": [{ "KPH: sso": "google" }]
 }
 ```
+
+`notes` and `stringFields` are an extension of this fork, used when saving which provider a site signs in with
+(see `background/sso.js`). Only attributes starting with `KPH: ` are stored. They need the matching KeePassXC patch
+(the `custom` branch of the KeePassXC fork); a stock KeePassXC ignores them and saves the entry without them.
 
 Request:
 ```json

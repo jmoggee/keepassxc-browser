@@ -84,6 +84,13 @@ kpxcFill.fillFromAutofill = async function() {
         return;
     }
 
+    // Signing in with a provider is never started without the user choosing it
+    if (kpxcSSO.getCredentialProvider(kpxc.credentials[0])) {
+        kpxc.initLoginPopup();
+        kpxc.initAutocomplete();
+        return;
+    }
+
     const index = kpxc.combinations.length - 1;
     await sendMessage('page_set_login_id', kpxc.credentials[0].uuid);
     kpxcFill.fillInCredentials(kpxc.combinations[index], kpxc.credentials[0].login, kpxc.credentials[0].uuid);
@@ -236,6 +243,13 @@ kpxcFill.fillInCredentials = async function(combination, predefinedUsername, uui
     const selectedCredentials = kpxc.credentials.find(c => c.uuid === uuid);
     if (!selectedCredentials) {
         logError('Uuid not found: ' + uuid);
+        return;
+    }
+
+    // An entry flagged "sign in with <provider>" has nothing to fill: it presses the site's provider button
+    if (kpxcSSO.getCredentialProvider(selectedCredentials)) {
+        kpxcUserAutocomplete.closeList();
+        await kpxcSSO.signIn(selectedCredentials);
         return;
     }
 

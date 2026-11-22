@@ -276,3 +276,15 @@
     --bs-alert-border-color: var(--tn-border);
     --bs-alert-color: var(--tn-fg-dark);
 }
+
+[data-kpxc-theme='tokyo-night'] .kpxc-sso-button {
+    background-color: var(--tn-blue);
+    border-color: var(--tn-blue);
+    color: var(--tn-bg-dark);
+}
+
+[data-kpxc-theme='tokyo-night'] .kpxc-sso-button--plain {
+    background-color: transparent;
+    border-color: var(--tn-border);
+    color: var(--tn-fg-dark);
+}

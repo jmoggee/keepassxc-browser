@@ -401,11 +401,15 @@ kpxc.initLoginPopup = function() {
 
     // Returns a login item with additional information for sorting
     const getLoginItem = function(credential, withGroup, loginId) {
-        const title = credential.name.length < MAX_AUTOCOMPLETE_NAME_LEN
+        let title = credential.name.length < MAX_AUTOCOMPLETE_NAME_LEN
             ? credential.name
             : credential.name.substr(0, MAX_AUTOCOMPLETE_NAME_LEN) + '…';
         const group = (withGroup && credential.group) ? `[${credential.group}] ` : '';
         const visibleLogin = (credential.login.length > 0) ? credential.login : tr('credentialsNoUsername');
+        const ssoProvider = kpxcSSO.getCredentialProvider(credential);
+        if (ssoProvider) {
+            title = tr('ssoSignInWith', ssoProvider.name);
+        }
         let text = `${group}${title} (${visibleLogin})`;
 
         if (credential.expired && credential.expired === 'true') {
@@ -673,6 +677,8 @@ kpxc.retrieveCredentialsCallback = async function(credentials) {
         await kpxc.prepareCredentials();
     }
 
+    await kpxcSSO.onCredentials();
+
     // Update fill_attribute context menu if String Fields are available
     const stringFieldsFound = credentials.some(e => e.stringFields && e.stringFields.length > 0);
     if (stringFieldsFound) {
@@ -862,6 +868,7 @@ const initContentScript = async function() {
 
         await kpxc.updateDatabaseState();
         await kpxc.initCredentialFields();
+        kpxcSSO.init();
 
         if (kpxc.settings.useObserver) {
             await kpxcObserverHelper.initObserver();
@@ -973,6 +980,16 @@ browser.runtime.onMessage.addListener(async function(req, sender) {
             kpxc.rememberCredentialsFromContextMenu();
         } else if (req.action === 'retrieve_credentials_forced') {
             await kpxc.retrieveCredentials(true);
+        } else if (req.action === 'sso_click_button') {
+            kpxcSSO.clickButton(req.args?.[0]);
+        } else if (req.action === 'sso_frame_buttons' && window.self === window.top) {
+            req.args?.[0]?.forEach(id => kpxcSSO.frameProviders.add(id));
+            kpxcSSO.offerSignIn();
+        } else if (req.action === 'sso_offer_save' && window.self === window.top) {
+            const offer = await sendMessage('sso_site_loaded');
+            if (offer) {
+                kpxcSSO.showSaveCard(offer);
+            }
         } else if (req.action === 'show_password_generator') {
             kpxcPasswordGenerator.showPasswordGenerator();
         } else if (req.action === 'request_autotype') {

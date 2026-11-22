@@ -1,0 +1,145 @@
+/* "Sign in with <provider>" cards, shown top right of the page (content/sso.js) */
+.kpxc-sso-card {
+    background-color: var(--kpxc-background-color);
+    border: var(--kpxc-autocomplete-menu-border);
+    border-radius: 8px;
+    box-shadow: var(--kpxc-box-shadow);
+    box-sizing: border-box;
+    color: var(--kpxc-text-color);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 14px;
+    letter-spacing: normal;
+    line-height: 1.3;
+    padding: 12px;
+    position: fixed;
+    right: 16px;
+    text-align: start;
+    top: 16px;
+    width: 320px;
+    max-width: calc(100vw - 32px);
+    z-index: 2147483646;
+}
+
+.kpxc-sso-header {
+    align-items: center;
+    display: flex;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.kpxc-sso-icon {
+    height: 18px;
+    width: 18px;
+}
+
+.kpxc-sso-title {
+    color: var(--kpxc-light-text-color);
+    flex: 1;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.kpxc-sso-close {
+    background: none;
+    border: 0;
+    border-radius: 4px;
+    color: var(--kpxc-lighter-text-color);
+    cursor: pointer;
+    font-size: 18px;
+    height: 24px;
+    line-height: 1;
+    padding: 0;
+    width: 24px;
+}
+
+.kpxc-sso-close:hover {
+    background-color: var(--kpxc-table-hover-color);
+}
+
+.kpxc-sso-row {
+    align-items: center;
+    display: flex;
+    gap: 12px;
+    justify-content: space-between;
+}
+
+.kpxc-sso-row + .kpxc-sso-row {
+    border-top: 1px solid var(--kpxc-card-border-color);
+    margin-top: 10px;
+    padding-top: 10px;
+}
+
+.kpxc-sso-text {
+    min-width: 0;
+}
+
+.kpxc-sso-provider {
+    font-weight: bold;
+}
+
+.kpxc-sso-account {
+    color: var(--kpxc-lighter-text-color);
+    font-size: 12px;
+    margin-top: 2px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.kpxc-sso-message {
+    margin-bottom: 10px;
+}
+
+.kpxc-sso-input {
+    background-color: var(--kpxc-input-background-color);
+    border: 1px solid var(--kpxc-input-main-border-color);
+    border-radius: 4px;
+    box-sizing: border-box;
+    color: var(--kpxc-text-color);
+    font: inherit;
+    padding: 6px 8px;
+    width: 100%;
+}
+
+.kpxc-sso-input:focus {
+    border-color: var(--kpxc-input-active-border-color);
+    outline: none;
+}
+
+.kpxc-sso-actions {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+    margin-top: 10px;
+}
+
+.kpxc-sso-button {
+    background-color: #28a745;
+    border: 1px solid #28a745;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+    flex-shrink: 0;
+    font: inherit;
+    font-weight: bold;
+    padding: 6px 12px;
+}
+
+.kpxc-sso-button:hover {
+    filter: brightness(92%);
+}
+
+.kpxc-sso-button--plain {
+    background-color: transparent;
+    border-color: var(--kpxc-input-main-border-color);
+    color: var(--kpxc-lighter-text-color);
+    font-weight: normal;
+}
+
+@media print {
+    .kpxc-sso-card {
+        visibility: hidden;
+    }
+}
