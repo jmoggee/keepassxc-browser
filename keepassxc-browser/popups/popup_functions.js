@@ -28,13 +28,10 @@ async function initSettings() {
 }
 
 async function initColorTheme() {
-    let theme = await browser.runtime.sendMessage({
+    const theme = await browser.runtime.sendMessage({
         action: 'get_color_theme'
     });
-    if (theme === 'system') {
-        theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    }
-    document.documentElement.setAttribute('data-bs-theme', theme);
+    applyColorTheme(document.documentElement, theme);
 }
 
 async function getLoginData(useBasicAuth = false) {

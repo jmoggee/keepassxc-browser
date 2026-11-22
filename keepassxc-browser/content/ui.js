@@ -199,6 +199,7 @@ kpxcUI.createNotification = async function(type, message) {
     logDebug(message);
 
     const notification = kpxcUI.createElement('div', 'kpxc-notification kpxc-notification-' + type, {});
+    initColorTheme(notification);
     type = type.charAt(0).toUpperCase() + type.slice(1) + '!';
 
     const className = getIconClass('kpxc-banner-icon');
@@ -222,7 +223,7 @@ kpxcUI.createNotification = async function(type, message) {
         return;
     }
 
-    this.shadowRoot.append(styleSheet);
+    this.shadowRoot.append(styleSheet, createStylesheet('css/colors.css'));
     this.shadowRoot.append(notification);
     document.body.append(notificationWrapper);
 
@@ -278,11 +279,7 @@ kpxcUI.createPageObserver = function() {
 };
 
 const initColorTheme = function(elem) {
-    let theme = kpxc.settings['colorTheme'];
-    if (theme === 'system') {
-        theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    }
-    elem.setAttribute('data-bs-theme', theme);
+    applyColorTheme(elem, kpxc.settings['colorTheme']);
 };
 
 const createStylesheet = function(file) {

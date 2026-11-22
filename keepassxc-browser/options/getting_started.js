@@ -41,10 +41,7 @@ const saveSettings = async function() {
 };
 
 const updateTheme = function(theme) {
-    if (theme === 'system') {
-        theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    }
-    document.documentElement.setAttribute('data-bs-theme', theme);
+    applyColorTheme(document.documentElement, theme);
 };
 
 (async() => {

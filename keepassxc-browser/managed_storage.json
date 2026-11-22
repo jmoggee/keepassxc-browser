@@ -53,7 +53,7 @@
           "type": "integer"
         },
         "colorTheme": {
-          "title": "Extension color scheme. Default: system",
+          "title": "Extension color scheme: system, light, dark or tokyo-night. Default: system",
           "type": "string"
         },
         "connectionMethod": {

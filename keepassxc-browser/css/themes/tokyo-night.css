@@ -1,0 +1,278 @@
+/*
+ * Tokyo Night (https://github.com/folke/tokyonight.nvim, "night" variant).
+ *
+ * A theme is this one file: the --tn-* palette, the extension's own --kpxc-* colors, Bootstrap's
+ * --bs-* colors for the popup and settings pages, and the few places that hard-code a color.
+ * To add another theme, copy this file, rename the selector, import it in css/colors.css, and
+ * list it in COLOR_THEMES (common/global.js), the manifests and the two theme <select>s.
+ *
+ * The selector carries [data-bs-theme] as well so it outranks the built-in light and dark rules
+ * whatever order the stylesheets load in.
+ */
+[data-kpxc-theme='tokyo-night'][data-bs-theme] {
+    --tn-bg: #1a1b26;
+    --tn-bg-dark: #16161e;
+    --tn-bg-float: #1f2335;
+    --tn-bg-highlight: #292e42;
+    --tn-border: #3b4261;
+    --tn-fg: #c0caf5;
+    --tn-fg-dark: #a9b1d6;
+    --tn-comment: #565f89;
+    --tn-blue: #7aa2f7;
+    --tn-blue-dark: #3d59a1;
+    --tn-cyan: #7dcfff;
+    --tn-green: #9ece6a;
+    --tn-magenta: #bb9af7;
+    --tn-orange: #ff9e64;
+    --tn-red: #f7768e;
+    --tn-yellow: #e0af68;
+
+    color-scheme: dark;
+
+    --kpxc-autocomplete-footer-color: var(--tn-bg-dark);
+    --kpxc-autocomplete-menu-border: 1px solid var(--tn-border);
+    --kpxc-background-color: var(--tn-bg);
+    --kpxc-box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.45), 0 8px 10px -6px rgb(0 0 0 / 0.45);
+    --kpxc-box-shadow-strong: 0 20px 25px -5px rgb(0 0 0 / 0.8), 0 8px 10px -6px rgb(0 0 0 / 0.8);
+    --kpxc-card-background-color: var(--tn-bg-float);
+    --kpxc-card-border-color: var(--tn-border);
+    --kpxc-card-header-color: var(--tn-bg-dark);
+    --kpxc-checkbox-color: var(--tn-border);
+    --kpxc-checkbox-background-color: var(--tn-bg-dark);
+    --kpxc-container-border: 1px solid var(--tn-border);
+    --kpxc-input-active-border-color: var(--tn-blue);
+    --kpxc-input-background-color: var(--tn-bg-dark);
+    --kpxc-input-border: 1px solid var(--tn-blue-dark);
+    --kpxc-input-border-color: var(--tn-border);
+    --kpxc-input-main-border-color: var(--tn-border);
+    --kpxc-link-color: var(--tn-blue);
+    --kpxc-link-hover-color: var(--tn-cyan);
+    --kpxc-scrollbar-background: var(--tn-bg-dark);
+    --kpxc-scrollbar-thumb: var(--tn-border);
+    --kpxc-sidebar-background-color: var(--tn-bg-dark);
+    --kpxc-table-border-color: var(--tn-border);
+    --kpxc-table-hover-color: var(--tn-bg-highlight);
+    --kpxc-table-odd-color: var(--tn-bg-float);
+    --kpxc-text-color: var(--tn-fg);
+    --kpxc-lighter-text-color: var(--tn-fg-dark);
+    --kpxc-light-text-color: var(--tn-comment);
+
+    /* Bootstrap (popup and settings pages) */
+    --bs-body-bg: var(--tn-bg);
+    --bs-body-bg-rgb: 26, 27, 38;
+    --bs-body-color: var(--tn-fg);
+    --bs-body-color-rgb: 192, 202, 245;
+    --bs-emphasis-color: #fff;
+    --bs-emphasis-color-rgb: 255, 255, 255;
+    --bs-secondary-color: var(--tn-fg-dark);
+    --bs-secondary-bg: var(--tn-bg-highlight);
+    --bs-tertiary-color: var(--tn-comment);
+    --bs-tertiary-bg: var(--tn-bg-float);
+    --bs-heading-color: var(--tn-fg);
+    --bs-border-color: var(--tn-border);
+    --bs-border-color-translucent: rgba(59, 66, 97, 0.6);
+    --bs-link-color: var(--tn-blue);
+    --bs-link-color-rgb: 122, 162, 247;
+    --bs-link-hover-color: var(--tn-cyan);
+    --bs-link-hover-color-rgb: 125, 207, 255;
+    --bs-code-color: var(--tn-magenta);
+    --bs-primary: var(--tn-blue);
+    --bs-primary-rgb: 122, 162, 247;
+    --bs-success: var(--tn-green);
+    --bs-success-rgb: 158, 206, 106;
+    --bs-info: var(--tn-cyan);
+    --bs-info-rgb: 125, 207, 255;
+    --bs-warning: var(--tn-yellow);
+    --bs-warning-rgb: 224, 175, 104;
+    --bs-danger: var(--tn-red);
+    --bs-danger-rgb: 247, 118, 142;
+    --bs-primary-text-emphasis: var(--tn-blue);
+    --bs-success-text-emphasis: var(--tn-green);
+    --bs-info-text-emphasis: var(--tn-cyan);
+    --bs-warning-text-emphasis: var(--tn-yellow);
+    --bs-danger-text-emphasis: var(--tn-red);
+    --bs-primary-bg-subtle: rgba(122, 162, 247, 0.12);
+    --bs-success-bg-subtle: rgba(158, 206, 106, 0.12);
+    --bs-info-bg-subtle: rgba(125, 207, 255, 0.12);
+    --bs-warning-bg-subtle: rgba(224, 175, 104, 0.12);
+    --bs-danger-bg-subtle: rgba(247, 118, 142, 0.12);
+    --bs-primary-border-subtle: rgba(122, 162, 247, 0.4);
+    --bs-success-border-subtle: rgba(158, 206, 106, 0.4);
+    --bs-info-border-subtle: rgba(125, 207, 255, 0.4);
+    --bs-warning-border-subtle: rgba(224, 175, 104, 0.4);
+    --bs-danger-border-subtle: rgba(247, 118, 142, 0.4);
+    --bs-form-valid-color: var(--tn-green);
+    --bs-form-valid-border-color: var(--tn-green);
+    --bs-form-invalid-color: var(--tn-red);
+    --bs-form-invalid-border-color: var(--tn-red);
+}
+
+/* Bootstrap buttons: tinted fills with dark text */
+[data-kpxc-theme='tokyo-night'] .btn-primary,
+[data-kpxc-theme='tokyo-night'] .btn-success,
+[data-kpxc-theme='tokyo-night'] .btn-info,
+[data-kpxc-theme='tokyo-night'] .btn-warning,
+[data-kpxc-theme='tokyo-night'] .btn-danger {
+    --bs-btn-color: var(--tn-bg-dark);
+    --bs-btn-hover-color: var(--tn-bg-dark);
+    --bs-btn-active-color: var(--tn-bg-dark);
+    --bs-btn-disabled-color: var(--tn-bg-dark);
+    --bs-btn-bg: var(--tn-accent);
+    --bs-btn-border-color: var(--tn-accent);
+    --bs-btn-hover-bg: color-mix(in srgb, var(--tn-accent) 85%, #fff);
+    --bs-btn-hover-border-color: color-mix(in srgb, var(--tn-accent) 85%, #fff);
+    --bs-btn-active-bg: color-mix(in srgb, var(--tn-accent) 85%, #000);
+    --bs-btn-active-border-color: color-mix(in srgb, var(--tn-accent) 85%, #000);
+    --bs-btn-disabled-bg: var(--tn-accent);
+    --bs-btn-disabled-border-color: var(--tn-accent);
+}
+
+[data-kpxc-theme='tokyo-night'] .btn-primary { --tn-accent: var(--tn-blue); }
+[data-kpxc-theme='tokyo-night'] .btn-success { --tn-accent: var(--tn-green); }
+[data-kpxc-theme='tokyo-night'] .btn-info { --tn-accent: var(--tn-cyan); }
+[data-kpxc-theme='tokyo-night'] .btn-warning { --tn-accent: var(--tn-yellow); }
+[data-kpxc-theme='tokyo-night'] .btn-danger { --tn-accent: var(--tn-red); }
+
+[data-kpxc-theme='tokyo-night'] .btn-secondary,
+[data-kpxc-theme='tokyo-night'] .btn-outline-secondary {
+    --bs-btn-color: var(--tn-fg);
+    --bs-btn-bg: var(--tn-bg-highlight);
+    --bs-btn-border-color: var(--tn-border);
+    --bs-btn-hover-color: var(--tn-fg);
+    --bs-btn-hover-bg: var(--tn-border);
+    --bs-btn-hover-border-color: var(--tn-border);
+    --bs-btn-active-bg: var(--tn-border);
+    --bs-btn-active-border-color: var(--tn-border);
+}
+
+[data-kpxc-theme='tokyo-night'] .form-check-input:checked {
+    background-color: var(--tn-blue);
+    border-color: var(--tn-blue);
+}
+
+[data-kpxc-theme='tokyo-night'] .form-control:focus,
+[data-kpxc-theme='tokyo-night'] .form-select:focus,
+[data-kpxc-theme='tokyo-night'] .form-check-input:focus {
+    border-color: var(--tn-blue);
+    box-shadow: 0 0 0 .2rem rgba(122, 162, 247, 0.25);
+}
+
+[data-kpxc-theme='tokyo-night'] .list-group {
+    --bs-list-group-bg: var(--tn-bg-float);
+    --bs-list-group-color: var(--tn-fg);
+    --bs-list-group-border-color: var(--tn-border);
+    --bs-list-group-action-hover-bg: var(--tn-bg-highlight);
+    --bs-list-group-action-hover-color: var(--tn-fg);
+    --bs-list-group-active-bg: var(--tn-blue-dark);
+    --bs-list-group-active-border-color: var(--tn-blue-dark);
+}
+
+[data-kpxc-theme='tokyo-night'] .loader {
+    border-color: var(--tn-border);
+    border-top-color: var(--tn-blue);
+}
+
+[data-kpxc-theme='tokyo-night'] input[type="range"]::-moz-range-thumb {
+    background-color: var(--tn-blue);
+}
+
+[data-kpxc-theme='tokyo-night'] input[type="range"]::-webkit-slider-thumb {
+    background-color: var(--tn-blue);
+}
+
+/* In-page UI: credential menu, banners, buttons, notifications */
+[data-kpxc-theme='tokyo-night'] .kpxcAutocomplete-item--active,
+[data-kpxc-theme='tokyo-night'] .kpxcAutocomplete-item--active * {
+    background-color: var(--tn-blue-dark) !important;
+    color: #fff !important;
+}
+
+[data-kpxc-theme='tokyo-night'].kpxc-banner,
+[data-kpxc-theme='tokyo-night'].kpxc-banner-dialog,
+[data-kpxc-theme='tokyo-night'] .kpxc-banner-dialog {
+    background-color: var(--tn-bg-dark) !important;
+    border-color: var(--tn-border) !important;
+    color: var(--tn-fg) !important;
+}
+
+[data-kpxc-theme='tokyo-night'] .kpxc-banner-dialog .list-group-item:hover,
+[data-kpxc-theme='tokyo-night'].kpxc-banner-dialog .list-group-item:hover {
+    color: var(--tn-fg) !important;
+}
+
+[data-kpxc-theme='tokyo-night'] .kpxc-button {
+    border-color: var(--tn-border) !important;
+}
+
+[data-kpxc-theme='tokyo-night'] .kpxc-white-button {
+    background-color: var(--tn-bg-highlight) !important;
+    border-color: var(--tn-border) !important;
+    color: var(--tn-fg) !important;
+}
+
+[data-kpxc-theme='tokyo-night'] .kpxc-red-button {
+    background-color: var(--tn-red) !important;
+    border-color: var(--tn-red) !important;
+    color: var(--tn-bg-dark) !important;
+}
+
+[data-kpxc-theme='tokyo-night'] .kpxc-orange-button {
+    background-color: var(--tn-yellow) !important;
+    border-color: var(--tn-yellow) !important;
+    color: var(--tn-bg-dark) !important;
+}
+
+[data-kpxc-theme='tokyo-night'] .kpxc-blue-button {
+    background-color: var(--tn-blue) !important;
+    border-color: var(--tn-blue) !important;
+    color: var(--tn-bg-dark) !important;
+}
+
+[data-kpxc-theme='tokyo-night'] .kpxc-green-button {
+    background-color: var(--tn-green) !important;
+    border-color: var(--tn-green) !important;
+    color: var(--tn-bg-dark) !important;
+}
+
+[data-kpxc-theme='tokyo-night'] .kpxc-button:disabled,
+[data-kpxc-theme='tokyo-night'] .kpxc-gray-button {
+    background-color: var(--tn-bg-highlight) !important;
+    border-color: var(--tn-border) !important;
+    color: var(--tn-comment) !important;
+}
+
+[data-kpxc-theme='tokyo-night'].kpxc-notification {
+    background-color: var(--tn-bg-float);
+    border-color: var(--tn-border);
+    color: var(--tn-fg);
+}
+
+[data-kpxc-theme='tokyo-night'].kpxc-notification-success { border-color: var(--tn-green); }
+[data-kpxc-theme='tokyo-night'].kpxc-notification-warning { border-color: var(--tn-yellow); }
+[data-kpxc-theme='tokyo-night'].kpxc-notification-info { border-color: var(--tn-blue); }
+[data-kpxc-theme='tokyo-night'].kpxc-notification-error { border-color: var(--tn-red); }
+[data-kpxc-theme='tokyo-night'].kpxc-notification-success .kpxc-label { color: var(--tn-green); }
+[data-kpxc-theme='tokyo-night'].kpxc-notification-warning .kpxc-label { color: var(--tn-yellow); }
+[data-kpxc-theme='tokyo-night'].kpxc-notification-info .kpxc-label { color: var(--tn-blue); }
+[data-kpxc-theme='tokyo-night'].kpxc-notification-error .kpxc-label { color: var(--tn-red); }
+
+/* Settings pages hard-code "green" for switches and the primary button */
+[data-kpxc-theme='tokyo-night'] .form-check-input:checked,
+[data-kpxc-theme='tokyo-night'] .form-switch > .form-check-input:checked {
+    background-color: var(--tn-blue) !important;
+    border-color: var(--tn-blue) !important;
+}
+
+[data-kpxc-theme='tokyo-night'] .btn-primary,
+[data-kpxc-theme='tokyo-night'] .btn-success {
+    --bs-btn-bg: var(--tn-accent) !important;
+    --bs-btn-border-color: var(--tn-accent) !important;
+    --bs-btn-hover-bg: color-mix(in srgb, var(--tn-accent) 85%, #fff) !important;
+    --bs-btn-hover-border-color: color-mix(in srgb, var(--tn-accent) 85%, #fff) !important;
+}
+
+[data-kpxc-theme='tokyo-night'] .alert-secondary {
+    --bs-alert-bg: var(--tn-bg-highlight);
+    --bs-alert-border-color: var(--tn-border);
+    --bs-alert-color: var(--tn-fg-dark);
+}

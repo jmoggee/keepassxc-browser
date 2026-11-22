@@ -958,6 +958,10 @@
         "message": "Light",
         "description": "Light theme text."
     },
+    "optionsThemeTokyoNight": {
+        "message": "Tokyo Night",
+        "description": "Tokyo Night theme text."
+    },
     "optionsKeyboardShortcutsHeader": {
         "message": "Keyboard shortcuts",
         "description": "Keyboard shortcut header text."

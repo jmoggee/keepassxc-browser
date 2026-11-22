@@ -24,6 +24,32 @@ const CHECK_UPDATE_THREE_DAYS = 3;
 const CHECK_UPDATE_ONE_WEEK = 7;
 const CHECK_UPDATE_ONE_MONTH = 30;
 
+// Named color themes on top of light and dark. Each one is a stylesheet in css/themes/ that
+// css/colors.css imports; it sets its colors under [data-kpxc-theme='<name>'].
+// 'base' is the light or dark theme it builds on (Bootstrap, toolbar icon).
+const COLOR_THEMES = {
+    'tokyo-night': { base: 'dark' },
+};
+
+// Resolves a colorTheme setting to 'light' or 'dark'
+const getBaseColorTheme = function(theme) {
+    const base = COLOR_THEMES[theme]?.base ?? theme;
+    if (base === 'dark' || base === 'light') {
+        return base;
+    }
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+};
+
+// Sets the theme attributes the stylesheets select on
+const applyColorTheme = function(elem, theme) {
+    elem.setAttribute('data-bs-theme', getBaseColorTheme(theme));
+    if (COLOR_THEMES[theme]) {
+        elem.setAttribute('data-kpxc-theme', theme);
+    } else {
+        elem.removeAttribute('data-kpxc-theme');
+    }
+};
+
 const URL_WILDCARD = '1kpxcwc1';
 const schemeSegment = '(\\*|http|https|ws|wss|ftp)';
 const hostSegment = '(\\*|(?:\\*\\.)?(?:[^/*]+))?';

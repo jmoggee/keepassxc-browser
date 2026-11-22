@@ -1,3 +1,6 @@
+/* Named themes; see COLOR_THEMES in common/global.js */
+@import url('themes/tokyo-night.css');
+
 :root,
 :host {
     --kpxc-autocomplete-footer-color: #f2f2f2;

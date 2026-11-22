@@ -845,11 +845,7 @@ options.initAbout = function() {
 };
 
 options.updateTheme = function() {
-    let theme = options.settings['colorTheme'];
-    if (theme === 'system') {
-        theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    }
-    document.documentElement.setAttribute('data-bs-theme', theme);
+    applyColorTheme(document.documentElement, options.settings['colorTheme']);
     browser.runtime.sendMessage({ action: 'update_popup' });
 };
 
@@ -976,11 +972,7 @@ window.addEventListener('scroll', function() {
 (async() => {
     try {
         // We eagerly load the theme here to avoid a white flash
-        let theme = localStorage.getItem('colorTheme') || 'system';
-        if (theme === 'system') {
-            theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-        }
-        document.documentElement.setAttribute('data-bs-theme', theme);
+        applyColorTheme(document.documentElement, localStorage.getItem('colorTheme') || 'system');
 
         const settings = await browser.runtime.sendMessage({ action: 'load_settings' });
         options.settings = settings;

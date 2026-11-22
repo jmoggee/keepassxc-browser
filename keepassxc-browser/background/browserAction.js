@@ -88,7 +88,7 @@ browserAction.generateIconName = async function(iconType) {
         if (page.settings.colorTheme === 'system') {
             style = await retrieveColorScheme();
         } else {
-            style = page.settings.colorTheme;
+            style = COLOR_THEMES[page.settings.colorTheme]?.base ?? page.settings.colorTheme;
         }
     }
     const filetype = (page.isFirefox || page.isSafari) ? 'svg' : 'png';
