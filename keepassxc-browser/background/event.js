@@ -312,6 +312,7 @@ kpxcEvent.messageHandlers = {
     'sso_get_intent': kpxcSSO.getIntentForTab,
     'sso_get_logins': kpxcSSO.getLogins,
     'sso_get_site_logins': kpxcSSO.getSiteLogins,
+    'sso_has_opened_tab': kpxcSSO.hasOpenedTab,
     'sso_mark_step': kpxcSSO.markStep,
     'sso_provider_page_seen': kpxcSSO.providerPageSeen,
     'sso_save': kpxcSSO.save,

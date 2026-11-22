@@ -125,6 +125,7 @@ kpxc.detectDatabaseChange = async function(response) {
 
             await kpxc.initCredentialFields();
             kpxcIcons.switchIcons();
+            kpxcSSO.onCredentials();
 
             // If user has requested a manual fill through context menu the actual credential filling
             // is handled here when the opened database has been regognized. It's not a pretty hack.

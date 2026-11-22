@@ -107,6 +107,12 @@ kpxcSSO.markStep = async function(tab, args = []) {
     return true;
 };
 
+// Whether the sign-in has opened the provider's pop-up or tab yet
+kpxcSSO.hasOpenedTab = async function() {
+    const intent = await kpxcSSO.getIntent();
+    return Boolean(intent) && intent.openedTabs.length > 0;
+};
+
 kpxcSSO.end = async function() {
     await kpxcSSO.setState('ssoIntent', undefined);
 };

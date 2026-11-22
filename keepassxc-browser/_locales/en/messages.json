@@ -1514,6 +1514,10 @@
         "message": "Could not find this page's $1 sign-in button.",
         "description": "Shown when the site's provider button is missing."
     },
+    "ssoClickButton": {
+        "message": "The browser blocked the $1 window. Click the highlighted button to continue; the rest is filled in for you.",
+        "description": "Shown when a provider button inside a frame could not be pressed."
+    },
     "ssoSaveTitle": {
         "message": "Remember this sign-in?",
         "description": "Title of the card offering to save a provider sign-in."

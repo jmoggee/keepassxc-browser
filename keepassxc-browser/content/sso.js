@@ -269,13 +269,18 @@ kpxcSSO.signIn = async function(credential) {
     const button = kpxcSSO.buttons.get(provider.id);
     if (button && !matchesWithNodeName(button, 'IFRAME')) {
         button.click();
-    } else {
-        // The button is in a frame; a click made from here may be blocked there, so point at it too
-        sendMessage('sso_click_in_frames', [ provider.id ]);
-        if (button) {
-            kpxcSSO.highlight(button);
-        }
+        return;
     }
+
+    // The button is in a frame (Google renders its own that way), so that frame presses it.
+    // If the browser blocked the pop-up it opens, nothing follows: only then point at the button.
+    sendMessage('sso_click_in_frames', [ provider.id ]);
+    setTimeout(async () => {
+        if (button && !await sendMessage('sso_has_opened_tab')) {
+            kpxcSSO.highlight(button);
+            kpxcUI.createNotification('info', tr('ssoClickButton', provider.name));
+        }
+    }, 2000);
 };
 
 kpxcSSO.highlight = function(elem) {
