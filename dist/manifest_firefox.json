@@ -194,7 +194,8 @@
     "applications": {
         "gecko": {
             "id": "keepassxc-browser@keepassxc.org",
-            "strict_min_version": "115.0"
+            "strict_min_version": "115.0",
+            "update_url": "https://raw.githubusercontent.com/jmoggee/keepassxc-browser/custom/updates.json"
         }
     },
     "storage": {
